@@ -1,19 +1,16 @@
 package com.example.cinemo.core.di
 
-import android.content.Context
-import androidx.room.Room
-import com.example.cinemo.core.data.source.local.room.MoviesDao
-import com.example.cinemo.core.data.source.local.room.MoviesDatabase
+import com.example.cinemo.core.data.source.MoviesRepository
+import com.example.cinemo.core.domain.repository.IMoviesRepository
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
-@Module
+@Module(includes = [NetworkModule::class, DatabaseModule::class])
 @InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
 
-
+    @Binds
+    abstract fun provideRepository(moviesRepository: MoviesRepository): IMoviesRepository
 }

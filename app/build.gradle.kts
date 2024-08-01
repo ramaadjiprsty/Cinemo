@@ -4,6 +4,7 @@ plugins {
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id ("androidx.navigation.safeargs")
 }
 
 android {
@@ -36,6 +37,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -45,6 +50,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -59,18 +67,19 @@ dependencies {
     implementation (libs.kotlinx.coroutines.android)
 
     implementation (libs.androidx.room.runtime)
-    //noinspection KaptUsageInsteadOfKsp
     kapt (libs.androidx.room.compiler)
+
     androidTestImplementation (libs.androidx.room.testing)
     implementation (libs.androidx.room.ktx)
 
     implementation (libs.androidx.fragment.ktx)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 
-    implementation(libs.hilt.android.v244)
-    kapt(libs.hilt.android.compiler)
-
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:hilt-android-compiler:2.48.1")
 }
 
-kapt {
-    correctErrorTypes = true
+hilt {
+    enableAggregatingTask = true
 }
