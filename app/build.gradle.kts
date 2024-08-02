@@ -5,6 +5,7 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id ("androidx.navigation.safeargs")
+//    id("com.google.devtools.ksp")
 }
 
 android {
@@ -58,6 +59,8 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation (libs.glide)
+//    ksp ("com.github.bumptech.glide:ksp:4.15.1")
+
 
     implementation (libs.retrofit)
     implementation (libs.converter.gson)
@@ -67,6 +70,7 @@ dependencies {
     implementation (libs.kotlinx.coroutines.android)
 
     implementation (libs.androidx.room.runtime)
+    //noinspection KaptUsageInsteadOfKsp
     kapt (libs.androidx.room.compiler)
 
     androidTestImplementation (libs.androidx.room.testing)

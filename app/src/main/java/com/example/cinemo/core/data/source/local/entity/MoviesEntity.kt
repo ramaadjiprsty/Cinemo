@@ -24,6 +24,8 @@ data class MoviesEntity(
     val voteAverage: Double,
 
     @ColumnInfo(name = "isFavorite")
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = false,
 
+    @ColumnInfo(name = "moviePoster")
+    val moviePoster: String
 )

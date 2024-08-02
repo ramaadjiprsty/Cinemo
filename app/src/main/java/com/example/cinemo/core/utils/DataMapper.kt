@@ -15,6 +15,7 @@ object DataMapper {
                 movieDescription = it.overview!!,
                 movieReleaseDate = it.releaseDate!!,
                 voteAverage = it.voteAverage!!,
+                moviePoster = it.posterPath!!,
                 isFavorite = false
             )
             moviesList.add(movies)
@@ -30,7 +31,8 @@ object DataMapper {
                 overview = it.movieDescription,
                 releaseDate = it.movieReleaseDate,
                 voteAverage = it.voteAverage,
-                isFavorite = it.isFavorite
+                isFavorite = it.isFavorite,
+                posterPath = it.moviePoster
             )
         }
 
@@ -40,6 +42,7 @@ object DataMapper {
         movieDescription = input.overview!!,
         movieReleaseDate = input.releaseDate!!,
         voteAverage = input.voteAverage!!,
+        moviePoster = input.posterPath!!,
         isFavorite = input.isFavorite!!
     )
 }

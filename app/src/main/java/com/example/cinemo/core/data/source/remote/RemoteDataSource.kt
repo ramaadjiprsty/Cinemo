@@ -18,7 +18,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
     suspend fun getMovies(): Flow<ApiResponse<List<ResultsItem>>> {
         return flow {
             try {
-                val response = apiService.getListMovies("eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ODgzNjNiOTA0ZmJkNzIyMjg0OTUyOGU4OTllMzM0NiIsIm5iZiI6MTcyMTc4NTAyNS41OTUxMDgsInN1YiI6IjY2YTA1OTk2ZmVmNjA3Njc0NjBhN2MzOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.RIq10J4dpPfCbRxmWGvqvfyQUtAKkuOMxodcyrCDTEg")
+                val response = apiService.getListMovies()
                 val data = response.results
                 if (data.isNotEmpty()) {
                     emit(ApiResponse.Success(response.results))
