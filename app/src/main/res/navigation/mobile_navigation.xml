@@ -15,4 +15,10 @@
         android:name="com.example.cinemo.favorite.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.cinemo.about.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 </navigation>

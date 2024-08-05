@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Cinemo</string>
+    <string name="title_about">About</string>
 </resources>

@@ -1,12 +1,16 @@
 package com.example.cinemo
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.cinemo.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -28,5 +32,15 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
     }
+
+//    override fun onNavigationItemSelected(p0: MenuItem): Boolean {
+//        when (p0.itemId) {
+//            R.id.aboutActivity -> {
+//                val uri = Uri.parse("cinemo://about")
+//                startActivity(Intent(Intent.ACTION_VIEW, uri))
+//            }
+//        }
+//        return false
+//    }
 
 }

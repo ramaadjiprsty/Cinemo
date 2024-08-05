@@ -1,26 +1,24 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.dynamic.feature)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-parcelize")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id ("androidx.navigation.safeargs")
-//    id("com.google.devtools.ksp")
 }
-apply (from = "../shared_dependencies.gradle")
+
+apply(from = "../shared_dependencies.gradle")
 
 android {
-    namespace = "com.example.cinemo"
+    namespace = "com.example.cinemo.about"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.cinemo"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -32,20 +30,22 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
+    kotlinOptions{
         jvmTarget = "1.8"
     }
 
     buildFeatures {
         viewBinding = true
     }
-    dynamicFeatures += setOf(":about")
 }
 
+
+
 dependencies {
+    implementation(project(":app"))
     implementation(project(":core"))
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.fragment.ktx)
 }

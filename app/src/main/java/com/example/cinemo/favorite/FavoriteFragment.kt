@@ -21,12 +21,6 @@ class FavoriteFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel: FavoriteViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +42,11 @@ class FavoriteFragment : Fragment() {
             }
 
             viewModel.favoriteMovies.observe(viewLifecycleOwner) {
+                if (it.isNotEmpty()) {
+                    binding.noFavorite.visibility = View.GONE
+                } else {
+                    binding.noFavorite.visibility = View.VISIBLE
+                }
                 moviesAdapter.setData(it)
             }
 
