@@ -1,26 +1,22 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-parcelize")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
-    id ("androidx.navigation.safeargs")
-//    id("com.google.devtools.ksp")
 }
+
 apply (from = "../shared_dependencies.gradle")
 
 android {
-    namespace = "com.example.cinemo"
+    namespace = "com.example.cinemo.core"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.cinemo"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -46,5 +42,18 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
+    //retrofit
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.logging.interceptor)
+
+    //coroutines
+    implementation (libs.kotlinx.coroutines.core)
+    implementation (libs.kotlinx.coroutines.android)
+
+    //room
+    implementation (libs.androidx.room.runtime)
+    //noinspection KaptUsageInsteadOfKsp
+    kapt (libs.androidx.room.compiler)
+    androidTestImplementation (libs.androidx.room.testing)
 }

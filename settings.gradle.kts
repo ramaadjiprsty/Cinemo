@@ -23,4 +23,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Cinemo"
 include(":app")
- 
+include(":core")

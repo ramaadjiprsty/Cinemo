@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.cinemo.R
+import com.example.cinemo.core.R
+import com.example.cinemo.core.databinding.ItemListMoviesBinding
 import com.example.cinemo.core.domain.model.Movie
-import com.example.cinemo.databinding.ItemListMoviesBinding
 
 class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ListViewHolder>() {
 
