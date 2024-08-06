@@ -1,5 +1,6 @@
-package com.example.cinemo.favorite
+package com.example.favorite.ui
 
+import android.content.Context
 import android.content.Intent
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,18 +9,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.cinemo.R
 import com.example.cinemo.core.ui.MoviesAdapter
 import com.example.cinemo.databinding.FragmentFavoriteBinding
 import com.example.cinemo.detail.DetailActivity
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.favorite.di.DaggerFavoriteComponent
+import com.example.cinemo.di.FavoriteModuleDependencies
+import com.example.favorite.di.ViewModelFactory
+import dagger.hilt.android.EntryPointAccessors
+import javax.inject.Inject
 
-@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: FavoriteViewModel by viewModels()
+
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val viewModel: FavoriteViewModel by viewModels {
+        factory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +36,20 @@ class FavoriteFragment : Fragment() {
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        DaggerFavoriteComponent.builder()
+            .context(context)
+            .appDependencies(
+                EntryPointAccessors.fromApplication(
+                    context,
+                    FavoriteModuleDependencies::class.java
+                )
+            )
+            .build()
+            .inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
