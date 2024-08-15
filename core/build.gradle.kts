@@ -21,7 +21,14 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -53,6 +60,7 @@ dependencies {
 
     //room
     implementation (libs.androidx.room.runtime)
+
     //noinspection KaptUsageInsteadOfKsp
     kapt (libs.androidx.room.compiler)
     androidTestImplementation (libs.androidx.room.testing)
