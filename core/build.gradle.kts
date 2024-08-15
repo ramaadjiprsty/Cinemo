@@ -56,4 +56,7 @@ dependencies {
     //noinspection KaptUsageInsteadOfKsp
     kapt (libs.androidx.room.compiler)
     androidTestImplementation (libs.androidx.room.testing)
+
+    implementation (libs.android.database.sqlcipher)
+    implementation (libs.androidx.sqlite.ktx)
 }

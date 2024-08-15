@@ -76,11 +76,12 @@
             android:id="@+id/fab_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:contentDescription="favorite"
             android:src="@drawable/baseline_favorite_border_24"
-            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_movie"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toEndOf="@+id/iv_movie" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
