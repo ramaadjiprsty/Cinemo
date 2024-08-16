@@ -102,5 +102,37 @@ public *;
 #-dontwarn java.util.concurrent.Flow*
 
 
+# Keep Hilt components
+-keep class * implements dagger.hilt.internal.GeneratedComponent { *; }
+-keep class * implements dagger.hilt.internal.GeneratedComponentManager { *; }
+-keep class * implements dagger.hilt.android.internal.managers.ViewComponentManager$FragmentContextWrapper { *; }
+
+# Keep classes with @Inject constructors
+-keepclasseswithmembernames class * {
+    @javax.inject.Inject <init>(...);
+}
+
+# Keep Hilt Android classes (for projects using Hilt with Android)
+-keep class dagger.hilt.android.** { *; }
+-keep interface dagger.hilt.android.** { *; }
+
+# Keep classes annotated with @HiltAndroidApp, @AndroidEntryPoint, etc.
+-keep @dagger.hilt.android.HiltAndroidApp class *
+-keep @dagger.hilt.android.AndroidEntryPoint class *
+-keep @dagger.hilt.InstallIn class *
+-keep @dagger.Module class *
+-keep @dagger.hilt.components.SingletonComponent class *
+-keep @dagger.hilt.android.components.ActivityComponent class *
+-keep @dagger.hilt.android.components.FragmentComponent class *
+
+# Keep classes with @Module annotations
+-keep @dagger.Module class * { *; }
+
+# Keep classes with @Provides annotations
+-keep class * {
+    @dagger.Provides <methods>;
+}
+
+
 
 
